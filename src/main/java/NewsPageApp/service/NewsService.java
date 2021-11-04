@@ -4,6 +4,7 @@ import NewsPageApp.models.News;
 import NewsPageApp.models.NewsType;
 import NewsPageApp.repositories.NewsRepository;
 import NewsPageApp.repositories.NewsTypeRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,18 +13,18 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
+@RequiredArgsConstructor
 public class NewsService {
 
     @Autowired
-    private NewsRepository newsRepository;
+    private final NewsRepository newsRepository;
 
     @Autowired
-    private NewsTypeRepository newsTypeRepository;
+    private final NewsTypeRepository newsTypeRepository;
 
-    public void addNews(int id, String name, String shortDesc, String fullDesc, int typeId) {
+    public void addNews(String name, String shortDesc, String fullDesc, int typeId) {
         NewsType newsType = newsTypeRepository.findById(typeId).orElseThrow(() -> new NoSuchElementException(""));
         News news = new News();
-        news.setId(id);
         news.setName(name);
         news.setShortDesc(shortDesc);
         news.setFullDesc(fullDesc);
