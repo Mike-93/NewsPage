@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS news
     id          SERIAL  NOT NULL,
     short_desc  TEXT    NOT NULL,
     full_desc   TEXT    NOT NULL,
-    type_id     INT,
+    type        INT,
     PRIMARY KEY (id),
-    FOREIGN KEY (type_id) REFERENCES news_type (id)
+    FOREIGN KEY (type) REFERENCES news_type (id)
 );
