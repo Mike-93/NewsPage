@@ -1,3 +1,9 @@
 databaseChangeLog:
   - include:
       file: db/changelog/creation-tables.sql
+
+  - include:
+      file: db/changelog/news-type-data.sql
+
+  - include:
+      file: db/changelog/news-data.sql

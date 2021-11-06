@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новости</title>
+</head>
+<body>
+<h1>Новости</h1>
+<a href="/news-types">Типы новостей</a>
+<br/>
+<div th:each="element : ${newsList}">
+    <h2 th:text="${element.getName()}"></h2>
+    <h3>
+        Тип новостей - <a th:href="'/news-type/' + ${element.getType().getId()} + '/list'"
+                          th:text="${element.getType().getName()} + ' (' + ${element.getType().getColor()} + ')'"></a>
+    </h3>
+    <p th:text="${element.getShortDesc()}"></p>
+    <a th:href="'/news/' + ${element.getId()}">Подробнее</a>
+</div>
+<br/>
+<br/>
+<div>
+    <h4>Добавить новость</h4>
+    <div>
+        <form action="/addNews" method="post">
+            <input type="text" name="name" placeholder="Введите заголовок" class="form-control"><br>
+            <input type="text" name="shortDesc" placeholder="Введите краткое описание" class="form-control"><br><br>
+            <textarea type="text" name="fullDesc" placeholder="Введите полное описание" class="form-control"></textarea><br>
+            <select name="type" class="form-select" aria-label="Выберите тип новости">
+                <div th:each="element : ${newsType}">
+                    <option th:value="${element.getId()}"
+                            th:text="${element.getName()} + ' (' + ${element.getColor()} + ')'"></option>
+                </div>
+            </select></br><br>
+            <button type="submit">Добавить новость</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${news.getName()}"> - Новости</title>
+</head>
+<body>
+<div>
+    <h1 th:text="${news.getName()}"></h1>
+    <h2>
+        Тип новостей - <a th:href="'/news-type/' + ${news.getType().getId()} + '/list'"
+                          th:text="${news.getType().getName()} + ' (' + ${news.getType().getColor()} + ')'"></a>
+    </h2>
+    <p th:text="${news.getFullDesc()}"></p>
+    <div>
+        <div>
+            <a th:href="'/news/' + ${news.getId()} + '/edit'">Редактировать</a>
+        </div>
+        <br><br>
+        <div>
+            <form th:action="'/news/' + ${news.getId()} + '/remove'" method="post">
+                <button type="submit">Удалить</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

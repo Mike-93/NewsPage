@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Типы новостей</title>
+</head>
+<body>
+<div>
+    <h1>Типы новостей</h1>
+    <div th:each="element : ${newsType}">
+        <h2 th:text="${element.getName()}"></h2>
+        <p th:text="${element.getColor()}"></p>
+        <a th:href="'/news-type/' + ${element.getId()} + '/edit'">Редактировать</a>
+        <form th:action="'/news-type/' + ${element.getId()} + '/remove'" method="post">
+            <button class="btn btn-danger btn-sm" type="submit">Удалить</button>
+        </form>
+    </div>
+</div>
+<div>
+    <h3>Добавить тип новостей</h3>
+    <div>
+        <form action="/news-types/addNewsType" method="post">
+            <input type="text" name="name" placeholder="Введите название типа" class="form-control"><br>
+            <input type="text" name="color" placeholder="Введите цвет" class="form-control"><br><br>
+            <button type="submit" class="btn btn-success">Добавить тип новости</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
