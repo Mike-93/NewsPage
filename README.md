@@ -1,6 +1,7 @@
 NewsPage
 
 Web-приложение для сохранения/отображения новостей и их типов/категорий.
+
 Использованные технологии: Spring boot framework, PostgresSQL, spring-data-jpa, Liquibase, Maven, Docker 
 
 Инструкция по запуску: 
