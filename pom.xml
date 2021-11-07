@@ -68,6 +68,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>news-page</finalName>
 	</build>
 
 </project>

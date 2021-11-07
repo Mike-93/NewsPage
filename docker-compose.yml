@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  APP:
+    image: 'news-page.jar'
+    build: ./
+    ports:
+      - "8086:8086"
+    depends_on:
+      - PostgreSQL
+
+  PostgreSQL:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=02029315
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=news_page_db
